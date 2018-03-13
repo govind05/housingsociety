@@ -1,0 +1,22 @@
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 80%;
+    margin: 15px auto;
+}
+
+.NavBar li a {
+    text-decoration: none;
+    color: #81C784;
+    font-size: 25px;
+}
+
+.Active {
+    font-size: 40px;
+    color: white;
+}
+
+.ToggleButton div {
+    display: none;
+}
