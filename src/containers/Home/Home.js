@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Layout from '../../hoc/Layout/Layout';
 
-class Home extends Component{
-  render(){
-    return(
-      <div></div>
+class Home extends Component {
+  render() {
+    return (
+      <Layout>
+        <div></div>
+      </Layout>
     )
   }
 }

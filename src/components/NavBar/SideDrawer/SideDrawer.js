@@ -17,7 +17,7 @@ const sideDrawer = (props) => {
           <li><NavLink to='/home' activeStyle={{ background: "#81C784"}}>Home</NavLink></li>
           <li><NavLink to='/notice' activeStyle={{ background: "#81C784" }}>Notice Board</NavLink></li>
           <li><NavLink to='/event' activeStyle={{ background: "#81C784" }}>Events</NavLink></li>
-          <li><NavLink to='/complaint' activeStyle={{ background: "#81C784" }}>Residents</NavLink></li>
+          <li><NavLink to='/residents' activeStyle={{ background: "#81C784" }}>Residents</NavLink></li>
           <li><NavLink to='/account' activeStyle={{ background: "#81C784" }}>Account</NavLink></li>
         </ul>
       </nav>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Notices from '../../components/Notices/Notices';
+import Layout from '../../hoc/Layout/Layout';
 
 const NOTICES = [
   {
@@ -54,12 +55,14 @@ class NoticeBoard extends React.Component {
   render() {
     console.log(this.state.currentNotice)
     return (
-      <div>
-        <Notices
-          data={NOTICES}
-          currentNotice={this.state.currentNotice} 
-          onReadMore={this.onReadMoreHandler} />
-      </div>
+      <Layout>
+        <div>
+          <Notices
+            data={NOTICES}
+            currentNotice={this.state.currentNotice}
+            onReadMore={this.onReadMoreHandler} />
+        </div>
+      </Layout>
     );
   }
 }
