@@ -4,6 +4,7 @@
     list-style: none;
     width: 80%;
     margin: 15px auto;
+    max-width: 800px;
 }
 
 .NavBar li a {

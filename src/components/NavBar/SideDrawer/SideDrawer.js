@@ -14,11 +14,11 @@ const sideDrawer = (props) => {
       <Backdrop show={props.open} clicked={props.clicked} />
       <nav className={classes.join(' ')} onClick={props.clicked}>
         <ul>
-          <li><NavLink to='/home' activeStyle={{ background: "#81C784"}}>Home</NavLink></li>
-          <li><NavLink to='/notice' activeStyle={{ background: "#81C784" }}>Notice Board</NavLink></li>
-          <li><NavLink to='/event' activeStyle={{ background: "#81C784" }}>Events</NavLink></li>
-          <li><NavLink to='/residents' activeStyle={{ background: "#81C784" }}>Residents</NavLink></li>
-          <li><NavLink to='/account' activeStyle={{ background: "#81C784" }}>Account</NavLink></li>
+          <li><NavLink to='/home' activeStyle={{ background: "#81C784", color: 'white' }}> Home </NavLink></li>
+          <li><NavLink to='/notice' activeStyle={{ background: "#81C784", color: 'white' }}>Notice Board</NavLink></li>
+          <li><NavLink to='/residents' activeStyle={{ background: "#81C784", color: 'white' }}>Residents</NavLink></li>
+          <li><NavLink to='/account' activeStyle={{ background: "#81C784", color: 'white' }}>Account</NavLink></li>
+          <li><a href="">Logout</a> </li>
         </ul>
       </nav>
     </React.Fragment>

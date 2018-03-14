@@ -1,0 +1,43 @@
+.RegisterComplaint {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.RegisterComplaint input[type='text'] {
+    margin-bottom: 10px;
+    font-size: 24px;
+    border: 2px solid #43A047;
+    padding: 3px 0;
+    padding-left: 10px;
+    color: #333;
+}
+
+.RegisterComplaint textarea {
+    margin-bottom: 10px;
+    font-size: 24px;
+    border: 2px solid #43A047;
+    padding: 3px 0;
+    padding-left: 10px;
+    color: #333;
+    height: 300px;
+}
+
+.RegisterComplaint input[type='submit'] {
+    max-width: 100px;
+    width: 40%;
+    height: 40px;
+    font-size: 24px;
+    align-self: flex-end;
+    background: #43A047;
+    border: none;
+    color: white;
+}
+
+@media(min-width: 600px) {
+    .RegisterComplaint {
+        width: 500px;
+    }
+}

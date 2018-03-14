@@ -1,0 +1,8 @@
+@media(min-width: 600px){
+  .Account{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+}
+  

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 24px;
 }
 
 .Form {
@@ -40,16 +41,17 @@
 }
 
 .Input input {
-    height: 25px;
-    font-size: 18px;
-    width: 110%;
+    height: 30px;
+    width: 80%;
     align-self: center;
+    font-size: 24px;
     padding-left: 5px;
+    border: 2px solid #A5D6A7;
 }
 
 .Error p {
     position: relative;
-    top: -20px;
+    top: -15px;
     padding: 0;
     margin: 10px;
     color: rgb(255, 0, 0);
@@ -59,32 +61,31 @@
 }
 
 .Form button {
-    height: 30px;
+    height: 35px;
     background-color: snow;
-    border: 2px solid #90CAF9;
+    border: 2px solid #4CAF50;
     cursor: pointer;
     margin-bottom: 5px;
     align-self: flex-end;
     padding-right: 10px;
     margin-right: 10px;
-    position: relative;
-    bottom: 0;
+    font-size: 24px;
 }
 
 .Form button:hover {
-    background-color: #90CAF9;
-    color: #333;
-    border: 2px solid #90CAF9
+    background-color: #4CAF50;
+    color: #fff;
+    border: 2px solid #4CAF50
 }
 
 .Form button:focus {
     outline: none;
-    background-color: #90CAF9;
+    background-color: #4CAF50;
     color: #333;
-    border: 2px solid #90CAF9
+    border: 2px solid #4CAF50
 }
 
 .Input input:focus {
-    outline: #90CAF9;
-    border: 2px solid #90CAF9
+    outline: #4CAF50;
+    border: 2px solid #4CAF50
 }

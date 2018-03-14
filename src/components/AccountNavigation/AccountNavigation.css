@@ -1,0 +1,21 @@
+.AccountNavigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.AccountNavigation a {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 20px;
+    border: 2px solid #2E7D32;
+    padding: 10px;
+}
+
+@media(min-width: 600px) {
+    .AccountNavigation a{
+      max-width: 200px;
+    }
+}

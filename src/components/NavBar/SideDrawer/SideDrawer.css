@@ -1,7 +1,7 @@
 .SideBar {
     position: fixed;
-    width: 380px;
-    max-width: 70%;
+    width: 80%;
+    max-width: 400px;
     height: 100%;
     left: 0;
     top: 0;
@@ -9,30 +9,29 @@
     background-color: white;
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
-}
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
 
 .SideBar ul {
-    padding: 0;
-    margin: 0;
     margin-top: 20%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
     list-style: none;
     width: 85%;
 }
 
 .SideBar ul li {
-    margin: 20px;
+    margin: 10px;
     width: 100%;
 }
 
 .SideBar ul li a {
+    display: block;
     text-decoration: none;
-    color: black;
+    color: #333;
     padding: 10px;
-    width: 280px;
+    width: 80%;
     font-size: 30px;
     border: 2px solid #4CAF50;
 }

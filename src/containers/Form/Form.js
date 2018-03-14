@@ -24,7 +24,7 @@ class FormLogin extends React.Component {
           <div className='Input'>
             <Field type='password' name='password' placeholder='Password' />
           </div>
-            {this.props.touched.password && this.props.errors.password && <p style={{marginTop: '-28px'}}>{this.props.errors.password}</p>}
+            {this.props.touched.password && this.props.errors.password && <p style={{marginTop: '-23px'}}>{this.props.errors.password}</p>}
           <button disabled={this.props.isSubmitting}>Login</button>
         </Form>
       </div>
