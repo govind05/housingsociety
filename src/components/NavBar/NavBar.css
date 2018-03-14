@@ -12,6 +12,10 @@
     font-size: 25px;
 }
 
+.NavBar li a:hover{
+  color: white;
+}
+
 .Active {
     font-size: 40px;
     color: white;

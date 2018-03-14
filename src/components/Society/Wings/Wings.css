@@ -1,0 +1,19 @@
+.Wings {
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.Wings a {
+    margin: 0 10px;
+    padding: 5px 5px;
+    text-decoration: none;
+    color: #333;
+    font-size: 30px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.Wings a:hover {
+    border-bottom: 5px solid #1B5E20;
+}

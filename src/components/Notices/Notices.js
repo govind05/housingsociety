@@ -6,9 +6,10 @@ const notices = (props) => {
   return (
     <div>
       <h1>Notice Board</h1>
+      <hr />
       {
         props.data.map((notice, i) => {
-        let showBody = props.currentNotice === notice.id ? true: false;
+          let showBody = props.currentNotice === notice.id ? true : false;
           return (
             <Notice
               key={notice.id}

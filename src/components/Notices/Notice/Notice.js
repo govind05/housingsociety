@@ -3,11 +3,9 @@ import React from 'react';
 import './Notice.css'
 
 const notice = (props) => {
-  let classes;
+  let classes = ['Body'];
   if (props.showBody) {
-    classes = ['Body', 'Open']
-  } else {
-    classes = ['Body', 'Closed'];
+    classes = ['Body', 'Opened']
   }
   return (
     <div className='Notice'>
