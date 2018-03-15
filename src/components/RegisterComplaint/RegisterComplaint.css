@@ -39,10 +39,14 @@
 }
 
 .RegisterComplaint input[type='submit']:active {
-    transform: translateY(3px);
+    transform: translateY(5px);
+    height: 35px;
     box-shadow: none;
 }
 
+.RegisterComplaint input[type='submit']:focus {
+  outline: none;
+}
 @media(min-width: 600px) {
     .RegisterComplaint {
         width: 500px;
