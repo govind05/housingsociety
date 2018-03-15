@@ -10,7 +10,7 @@ const port = process.env.PORT || 3001;
 const { mongoose } = require('./db/mongoose.js');
 const { Resident } = require('./models/resident');
 
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
