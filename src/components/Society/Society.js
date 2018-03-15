@@ -26,7 +26,7 @@ const society = (props) => {
             residentsCurrentFloor.map(resident => (
               <div key={resident.flatNo}>
                 <p>{resident.flatNo}</p>
-                <h1>{resident.name}</h1>
+                <h1 style={{wordWrap:'break-word'}}>{resident.name}</h1>
               </div>
             ))
           }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, Form, withFormik } from 'formik';
 import Yup from 'yup';
+import axios from 'axios';
 
 import './Form.css';
 
@@ -47,10 +48,14 @@ const FormikApp = withFormik({
     name: Yup.string().required('Name is required'),
     password: Yup.string().required('Password is required'),
   }),
-  // 
+  
   // Handling the login or Signup event.
   handleSubmit(values, { resetForm, setErrors, setFieldError, setSubmitting }) {
     console.log('Submitted!');
+    axios.post('http://localhost:3001/api/login', {
+      name: values.name,
+      password: values.password
+    })
     values.history.push('/home');
   }
 })(FormLogin);
