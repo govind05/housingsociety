@@ -9,11 +9,12 @@ const notices = (props) => {
       <hr />
       {
         props.data.map((notice, i) => {
-          let showBody = props.currentNotice === notice.id ? true : false;
+          console.log(notice)
+          let showBody = props.currentNotice === notice._id;
           return (
             <Notice
-              key={notice.id}
-              id={notice.id}
+              key={notice._id}
+              id={notice._id}
               date={notice.date}
               title={notice.title}
               subtitle={notice.subtitle}

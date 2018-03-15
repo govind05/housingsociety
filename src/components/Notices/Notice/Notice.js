@@ -7,10 +7,14 @@ const notice = (props) => {
   if (props.showBody) {
     classes = ['Body', 'Opened']
   }
+  let date = new Date(props.date).toDateString();
+  let hours = new Date(props.date).getHours();
+  let minutes = new Date(props.date).getMinutes();
   return (
     <div className='Notice'>
       <h3>{props.title}</h3>
-      <span>Date: {props.date}</span>
+      <span>Date: {date}</span>
+      <p>Time: {`${hours > 12 ? hours - 12 + ':' + minutes + ' pm' : hours + ':' + minutes + ' am'}`}</p>
       <p>{props.subtitle}</p>
       <div className={classes.join(' ')}>
         {props.showBody ? <p>{props.body}</p> : null}

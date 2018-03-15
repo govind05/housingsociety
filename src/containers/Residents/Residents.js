@@ -12,7 +12,7 @@ export default class Residents extends Component {
   }
 
   componentDidMount() {
-    fetch('https://thawing-reef-43238.herokuapp.com/api/residents')
+    fetch('http://localhost:3001/api/residents')
       .then(res => res.json())
       .then(data => this.setState({
         residents: data

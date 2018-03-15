@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Notices from '../../components/Notices/Notices';
 import Layout from '../../hoc/Layout/Layout';
@@ -43,8 +44,20 @@ const NOTICES = [
 
 class NoticeBoard extends React.Component {
   state = {
-    currentNotice: ''
+    currentNotice: '',
+    notices: ''
   }
+
+  componentDidMount() {
+    axios.get('https://thawing-reef-43238.herokuapp.com/api/notices')
+      .then(res => {
+        console.log(res.data)
+        return this.setState({
+        notices: res.data
+      })})
+      .catch(e => console.log(e))
+  }
+
   onReadMoreHandler = (id) => {
     id = this.state.currentNotice === id ? '' : id;
     this.setState({
@@ -54,14 +67,17 @@ class NoticeBoard extends React.Component {
 
   render() {
     console.log(this.state.currentNotice)
+    let notices = this.state.notices.length > 0 ? (
+      <div>
+        <Notices
+          data={this.state.notices}
+          currentNotice={this.state.currentNotice}
+          onReadMore={this.onReadMoreHandler} />
+      </div>
+    ) : null;
     return (
       <Layout>
-        <div>
-          <Notices
-            data={NOTICES}
-            currentNotice={this.state.currentNotice}
-            onReadMore={this.onReadMoreHandler} />
-        </div>
+        {notices}
       </Layout>
     );
   }

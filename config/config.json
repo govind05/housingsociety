@@ -5,7 +5,7 @@
     "JWT_SECRET": "asdhasdsafuihfwiqufsajhasf"
   },
   "development": {
-    "PORT": 3000,
+    "PORT": 3001,
     "MONGODB_URI": "mongodb://localhost:27017/housingSociety",
     "JWT_SECRET": "bcasbjfgsakjqwgfsakhgdsakfg"
   }
