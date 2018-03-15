@@ -34,6 +34,13 @@
     background: #43A047;
     border: none;
     color: white;
+    box-shadow: inset 0px -5px #2E7D32;
+    cursor: pointer;
+}
+
+.RegisterComplaint input[type='submit']:active {
+    transform: translateY(3px);
+    box-shadow: none;
 }
 
 @media(min-width: 600px) {

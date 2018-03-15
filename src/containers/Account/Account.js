@@ -48,18 +48,29 @@ export default class Account extends Component {
   render() {
     return (
       <Layout>
-      <div className='Account'> 
-        <AccountNavigation />
-        <Switch>
-          <Route
-            path='/account/user-info'
-            render={() => <UserInfo user={USER} />} />
-          <Route
-            path='/account/complaint'
-            render={() => <RegisterComplaint subject={this.state.subject} complaint={this.state.complaint} onChange={this.onChangeHandler} onSubmitComplaint={this.onSubmitComplaintHandler} />} />
-          <Redirect to='/account/user-info' />
-        </Switch>
-      </div>
+        <div className='Account'>
+          <AccountNavigation/>
+          <Switch>
+            <Route
+              path='/account/user-info'
+              render={() =>
+                <UserInfo
+                  user={USER}
+                />}
+            />
+            <Route
+              path='/account/complaint'
+              render={() =>
+                <RegisterComplaint
+                  subject={this.state.subject}
+                  complaint={this.state.complaint}
+                  onChange={this.onChangeHandler}
+                  onSubmitComplaint={this.onSubmitComplaintHandler}
+                />}
+            />
+            <Redirect to='/account/user-info' />
+          </Switch>
+        </div>
       </Layout>
     )
   }

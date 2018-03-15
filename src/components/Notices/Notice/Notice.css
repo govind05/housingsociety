@@ -11,12 +11,12 @@
 }
 
 .Notice button {
-    background: #fff;
-    border: 2px solid #4CAF50;
+    background: #33691E;
+    border: 2px solid #33691E;
     padding: 5px 10px;
     cursor: pointer;
     z-index: 100;
-    color: #4CAF50;
+    color: #fff;
     font-weight: bolder;
     border-radius: 20px;
 }
@@ -37,7 +37,6 @@
     opacity: 1;
     max-height: 400px;
 }
-
 
 @media(min-width: 600px) {
     .Notice {

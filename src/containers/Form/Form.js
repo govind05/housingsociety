@@ -23,8 +23,8 @@ class FormLogin extends React.Component {
           </div>
           <div className='Input'>
             <Field type='password' name='password' placeholder='Password' />
+            {this.props.touched.password && this.props.errors.password && <p>{this.props.errors.password}</p>}
           </div>
-            {this.props.touched.password && this.props.errors.password && <p style={{marginTop: '-23px'}}>{this.props.errors.password}</p>}
           <button disabled={this.props.isSubmitting}>Login</button>
         </Form>
       </div>
@@ -45,7 +45,7 @@ const FormikApp = withFormik({
   //Validation schema for the form.
   validationSchema:  Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    password: Yup.string().min(8, 'Password must be 8 characters or longer').required('Password is required'),
+    password: Yup.string().required('Password is required'),
   }),
   // 
   // Handling the login or Signup event.
