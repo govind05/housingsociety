@@ -12,6 +12,10 @@ export default class Residents extends Component {
   }
 
   componentDidMount() {
+    const token = localStorage.getItem('token')
+    if(!token){
+      this.props.history.replace('/')
+    }
     fetch('https://thawing-reef-43238.herokuapp.com/api/residents')
       .then(res => res.json())
       .then(data => this.setState({

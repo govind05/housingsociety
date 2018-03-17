@@ -49,6 +49,10 @@ class NoticeBoard extends React.Component {
   }
 
   componentDidMount() {
+    const token = localStorage.getItem('token')
+    if(!token){
+      this.props.history.replace('/')
+    }
     axios.get('https://thawing-reef-43238.herokuapp.com/api/notices')
       .then(res => {
         console.log(res.data)

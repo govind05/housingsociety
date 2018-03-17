@@ -10,6 +10,8 @@ const port = process.env.PORT || 3001;
 const { mongoose } = require('./db/mongoose.js');
 const { Resident } = require('./models/resident');
 const { Notice } = require('./models/notice');
+const { User } = require('./models/user');
+const { user_signup, user_login } = require('./controllers/users');
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
@@ -23,13 +25,25 @@ app.use(function (req, res, next) {
 app.use('/api', router);
 
 /*
+*Login API
+*/
+
+router.route('/login')
+  .post(user_login)
+
+/*
+*SignUp API
+*/
+
+router.route('/signup')
+  .post(user_signup)
+
+/*
 *Residents API
 */
 
 router.route('/residents')
-  /*
-  *Get All Residents
-  */
+  // Get All Residents
   .get((req, res) => {
     Resident.find()
       .then((residents) => {
@@ -59,9 +73,8 @@ router.route('/residents')
         res.send(allResidents)
       }, e => res.status(400).send(e));
   })
-  /*
-  *Add Residents
-  */
+
+  //Add Residents
   .post((req, res) => {
     let resident = new Resident({
       name: req.body.name,
@@ -77,6 +90,10 @@ router.route('/residents')
         res.status(400).send(e);
       });
   });
+
+/*
+*Notices API
+*/
 
 router.route('/notices')
   .get((req, res) => {

@@ -21,7 +21,12 @@ export default class Account extends Component {
     subject: '',
     complaint: '',
   }
-
+   componentDidMount() {
+    const token = localStorage.getItem('token')
+    if(!token){
+      this.props.history.replace('/')
+    }
+  }
   onSubmitComplaintHandler = (e) => {
     e.preventDefault();
     if (this.state.subject.trim() === '' || this.state.complaint.trim() === '') return;
@@ -49,7 +54,7 @@ export default class Account extends Component {
     return (
       <Layout>
         <div className='Account'>
-          <AccountNavigation/>
+          <AccountNavigation />
           <Switch>
             <Route
               path='/account/user-info'
