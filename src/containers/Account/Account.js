@@ -21,12 +21,16 @@ export default class Account extends Component {
   state = {
     subject: '',
     complaint: '',
+    token: '',
   }
   componentDidMount() {
     const token = localStorage.getItem('token')
     if (!token) {
       this.props.history.replace('/')
     }
+    this.setState({
+      token
+    })
   }
   onSubmitComplaintHandler = (e) => {
     e.preventDefault();
@@ -34,11 +38,15 @@ export default class Account extends Component {
     axios.post('https://thawing-reef-43238.herokuapp.com/api/complaints', {
       subject: this.state.subject,
       message: this.state.complaint,
-    })
-    .then( res => {
-      this.resetForm();
-    })
-    .catch(e => console.log(e));
+    }, {
+      headers: {
+        'x-auth': this.state.token
+      }
+      }, )
+      .then(res => {
+        this.resetForm();
+      })
+      .catch(e => console.log(e));
   }
 
   resetForm = () => {
