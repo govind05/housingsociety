@@ -17,7 +17,7 @@ export default class Residents extends Component {
     if(!token){
       this.props.history.replace('/')
     }
-    axios('thawing-reef-43238.herokuapp.com/api/residents',{
+    axios('https://thawing-reef-43238.herokuapp.com/api/residents',{
       headers: {
         'x-auth': token
       }})

@@ -15,7 +15,7 @@ class NoticeBoard extends React.Component {
     if(!token){
       this.props.history.replace('/')
     }
-    axios.get('thawing-reef-43238.herokuapp.com/api/notices', {
+    axios.get('https://thawing-reef-43238.herokuapp.com/api/notices', {
       headers: {
         'x-auth': token
       }
