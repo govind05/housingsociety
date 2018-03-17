@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 import Layout from '../../hoc/Layout/Layout';
 import UserInfo from '../../components/UserInfo/UserInfo';
@@ -21,16 +22,23 @@ export default class Account extends Component {
     subject: '',
     complaint: '',
   }
-   componentDidMount() {
+  componentDidMount() {
     const token = localStorage.getItem('token')
-    if(!token){
+    if (!token) {
       this.props.history.replace('/')
     }
   }
   onSubmitComplaintHandler = (e) => {
     e.preventDefault();
     if (this.state.subject.trim() === '' || this.state.complaint.trim() === '') return;
-    this.resetForm();
+    axios.post('https://thawing-reef-43238.herokuapp.com/api/complaints', {
+      subject: this.state.subject,
+      message: this.state.complaint,
+    })
+    .then( res => {
+      this.resetForm();
+    })
+    .catch(e => console.log(e));
   }
 
   resetForm = () => {

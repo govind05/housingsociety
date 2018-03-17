@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import moment from 'moment';
 
 import Notices from '../../components/Notices/Notices';
 import Layout from '../../hoc/Layout/Layout';

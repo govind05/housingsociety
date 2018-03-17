@@ -11,6 +11,7 @@ const { mongoose } = require('./db/mongoose.js');
 const { Resident } = require('./models/resident');
 const { Notice } = require('./models/notice');
 const { User } = require('./models/user');
+const { Complaint } = require('./models/complaint');
 const { user_signup, user_login } = require('./controllers/users');
 const authentication = require('./middleware/authenticate')
 
@@ -118,6 +119,28 @@ router.route('/notices')
       .then(doc => res.status(200).send(doc),
         e => res.status(400).send(e))
   });
+
+/*
+*Complaints API
+*/
+
+router.route('/complaints')
+  .get(authentication, (req, res) => {
+    Complaint.find()
+      .then(complaints => {
+        res.status(200).send(complaints);
+      }, e => res.status(400).send(e))
+  })
+  .post(authentication, (req, res) => {
+    let complaint = new Complaint({
+      userId: req.userData.id,
+      subject: req.body.subject,
+      message: req.body.message,
+    })
+    complaint.save()
+      .then(doc => res.status(200).send(doc),
+        e => res.status(400).send(e))
+  })
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'))
