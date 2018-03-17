@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 import Notices from '../../components/Notices/Notices';
 import Layout from '../../hoc/Layout/Layout';
@@ -21,7 +22,6 @@ class NoticeBoard extends React.Component {
       }
     })
       .then(res => {
-        console.log(res.data)
         return this.setState({
         notices: res.data
       })})
@@ -36,7 +36,6 @@ class NoticeBoard extends React.Component {
   }
 
   render() {
-    console.log(this.state.currentNotice)
     let notices = this.state.notices.length > 0 ? (
       <div>
         <Notices

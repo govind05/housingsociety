@@ -8,34 +8,40 @@ import './Form.css';
 import { authSuccess } from '../../store/actions/users';
 
 class FormLogin extends React.Component {
-
+  
   //For auto signin.
   componentDidMount() {
     const token = localStorage.getItem('token')
-    if(token){
+    if (token) {
       this.props.history.replace('/home')
     }
   }
 
   render() {
-
     return (
       <div className='AppForm'>
-        <Form className='Form'  >
-          <div className='Error'>
-            <Field type='hidden' name='error' />
-            {this.props.errors.error && <p>{this.props.errors.error}</p>}
-          </div>
-          <div className='Input'>
-            <Field type='name' name='name' placeholder='Username' autoFocus />
-            {this.props.touched.name && this.props.errors.name && <p>{this.props.errors.name}</p>}
-          </div>
-          <div className='Input'>
-            <Field type='password' name='password' placeholder='Password' />
-            {this.props.touched.password && this.props.errors.password && <p>{this.props.errors.password}</p>}
-          </div>
-          <button disabled={this.props.isSubmitting}>Login</button>
-        </Form>
+        <div className='BackgroundBlur'>
+          <Form className='Form'>
+            <div className='Error'>
+              <Field type='hidden' name='error' />
+              {this.props.errors.error && <p style={{
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+              }}>{this.props.errors.error}</p>}
+            </div>
+            <h2 style={{ alignSelf:'left',padding: 0, margin: 0, color: '#666', paddingLeft: '10%', paddingBottom: '18px'}}>Login</h2>
+            <div className={this.props.touched.name && this.props.errors.name ? 'Input Error' : 'Input '}>
+              <label> NAME</label>
+              <Field type='name' name='name' autoFocus />
+              {this.props.touched.name && this.props.errors.name && <p>{this.props.errors.name}</p>}
+            </div>
+            <div className={this.props.touched.password && this.props.errors.password ? ' Input Error' : 'Input '}>
+              <label> PASSWORD</label>
+              <Field type='password' name='password' />
+              {this.props.touched.password && this.props.errors.password && <p>{this.props.errors.password}</p>}
+            </div>
+            <button disabled={this.props.isSubmitting}>Login</button>
+          </Form>
+        </div>
       </div>
     )
   }
@@ -75,7 +81,7 @@ const FormikApp = withFormik({
       })
       .catch(err => {
         console.log(err)
-        setFieldError('error', 'Wrong Username or password');
+        setFieldError('error', 'Wrong Username or password'.toUpperCase());
         setSubmitting(false);
       })
   }

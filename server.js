@@ -101,8 +101,8 @@ router.route('/residents')
 
 router.route('/notices')
   .get(authentication, (req, res) => {
-    console.log(req.headers)
     Notice.find()
+      .sort('-date')
       .then(notices => {
         res.status(200).send(notices);
       }, e => res.status(400).send(e))

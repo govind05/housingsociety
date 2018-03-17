@@ -9,7 +9,6 @@ const notices = (props) => {
       <hr />
       {
         props.data.map((notice, i) => {
-          console.log(notice)
           let showBody = props.currentNotice === notice._id;
           return (
             <Notice
