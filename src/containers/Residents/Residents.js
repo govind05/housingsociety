@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom';
 import * as _ from 'lodash';
+import axios from 'axios';
 
 import Society from '../../components/Society/Society';
 import Wings from '../../components/Society/Wings/Wings';
@@ -16,10 +17,12 @@ export default class Residents extends Component {
     if(!token){
       this.props.history.replace('/')
     }
-    fetch('https://thawing-reef-43238.herokuapp.com/api/residents')
-      .then(res => res.json())
+    axios('thawing-reef-43238.herokuapp.com/api/residents',{
+      headers: {
+        'x-auth': token
+      }})
       .then(data => this.setState({
-        residents: data
+        residents: data.data
       }))
       .catch(err => console.log(err))
   }

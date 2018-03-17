@@ -12,13 +12,14 @@ const { Resident } = require('./models/resident');
 const { Notice } = require('./models/notice');
 const { User } = require('./models/user');
 const { user_signup, user_login } = require('./controllers/users');
+const authentication = require('./middleware/authenticate')
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
   next();
 });
 
@@ -38,13 +39,16 @@ router.route('/login')
 router.route('/signup')
   .post(user_signup)
 
+
 /*
 *Residents API
 */
 
 router.route('/residents')
+
   // Get All Residents
-  .get((req, res) => {
+  .get(authentication, (req, res) => {
+
     Resident.find()
       .then((residents) => {
         //Finding unique wings
@@ -75,7 +79,7 @@ router.route('/residents')
   })
 
   //Add Residents
-  .post((req, res) => {
+  .post(authentication, (req, res) => {
     let resident = new Resident({
       name: req.body.name,
       flatNo: req.body.flatNo,
@@ -96,13 +100,14 @@ router.route('/residents')
 */
 
 router.route('/notices')
-  .get((req, res) => {
+  .get(authentication, (req, res) => {
+    console.log(req.headers)
     Notice.find()
       .then(notices => {
         res.status(200).send(notices);
       }, e => res.status(400).send(e))
   })
-  .post((req, res) => {
+  .post(authentication, (req, res) => {
     let notice = new Notice({
       title: req.body.title,
       date: req.body.date,
