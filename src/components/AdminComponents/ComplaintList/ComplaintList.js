@@ -6,7 +6,7 @@ export default (props) => {
   return (
     <div className='ComplaintList'>
       {
-        props.complaints.map(complaint => (
+        props.complaints.reverse().map(complaint => (
           <div key={complaint._id}>
             <h1>{complaint.subject}</h1>
             <h3>

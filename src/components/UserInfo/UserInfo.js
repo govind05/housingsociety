@@ -9,11 +9,10 @@ export default (props) => {
       <div className='Image'>
       </div>
       <div className='Info'>
-        <p>Name: {user.name}</p>
-        <p>Age: {user.age}</p>
-        <p>Flat No: {user.flatNo}</p>
+        <p>Username: {user.userName}</p>
+        <p>First Name: {user.firstName}</p>
+        <p>Last Name: {user.lastName}</p>
       </div>
-
     </div>
   )
 }

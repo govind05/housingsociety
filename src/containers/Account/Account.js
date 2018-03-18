@@ -9,12 +9,6 @@ import RegisterComplaint from '../../components/RegisterComplaint/RegisterCompla
 
 import './Account.css';
 
-const USER = {
-  name: 'Govind Karki',
-  flatNo: 201,
-  parkingSpot: '312',
-  age: 22
-}
 
 export default class Account extends Component {
 
@@ -22,15 +16,30 @@ export default class Account extends Component {
     subject: '',
     complaint: '',
     token: '',
+    user:{
+      userName: '',
+      firstName: '',
+      lastName: '',
+    }
   }
   componentDidMount() {
     const token = localStorage.getItem('token')
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
+    const userName = localStorage.getItem('userName')
+    const user = {
+      firstName,
+      lastName,
+      userName,
+    }
     if (!token) {
       this.props.history.replace('/')
     }
     this.setState({
-      token
+      token,
+      user
     })
+    console.log(this.props)
   }
   onSubmitComplaintHandler = (e) => {
     e.preventDefault();
@@ -76,7 +85,7 @@ export default class Account extends Component {
               path='/account/user-info'
               render={() =>
                 <UserInfo
-                  user={USER}
+                  user={this.state.user}
                 />}
             />
             <Route

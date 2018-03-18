@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import NoticeForm from './../../components/AdminComponents/NoticeForm/NoticeForm';
@@ -148,10 +148,13 @@ export default class Admin extends Component {
          */}
         <AdminSideBar />
         <div style={{marginLeft: '200px', marginTop: '106px'}} >
+        <Switch>
         <Route path='/admin/notice' render={() => <NoticeForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onNoticeSubmitHandler} />} />
         <Route path='/admin/resident' render={() => <ResidentForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onResidentSubmitHandler} />} />
         <Route path='/admin/user' render={() => <UserForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onUserSubmitHandler} />} />
         <Route path='/admin/complaints' render={() => <ComplaintList complaints={this.state.complaints} />} />
+        <Redirect to='/admin/notice' />
+        </Switch>
         </div>
 
       </div>

@@ -77,7 +77,13 @@ const FormikApp = withFormik({
           resetForm();
           values.onAuthSuccess(res.data.token, res.data.uid);
           localStorage.setItem('token', res.data.token);
-          values.history.replace('/account');
+          localStorage.setItem('firstName', res.data.firstName);
+          localStorage.setItem('lastName', res.data.lastName);
+          localStorage.setItem('userName', res.data.userName);
+          values.history.replace({
+            pathname: '/account',
+            state: {user: res.data}
+          });
         }
       })
       .catch(err => {
