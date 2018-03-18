@@ -13,7 +13,7 @@ class FormLogin extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     if (token) {
-      this.props.history.replace('/home')
+      this.props.history.replace('/account')
     }
   }
 
@@ -71,12 +71,13 @@ const FormikApp = withFormik({
       password: values.password
     })
       .then(res => {
+        console.log(res)
         if (res.status === 200) {
           setSubmitting(false);
           resetForm();
           values.onAuthSuccess(res.data.token, res.data.uid);
           localStorage.setItem('token', res.data.token);
-          values.history.replace('/home');
+          values.history.replace('/account');
         }
       })
       .catch(err => {

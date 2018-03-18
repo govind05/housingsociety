@@ -44,6 +44,7 @@ exports.user_login = (req, res) => {
 }
 
 exports.user_signup = (req, res) => {
+  console.log('[SignUp] Here');
   User.find({ name: req.body.name })
     .then(doc => {
       if (doc.length > 0) {
