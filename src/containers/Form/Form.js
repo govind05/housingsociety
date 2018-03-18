@@ -82,7 +82,7 @@ const FormikApp = withFormik({
       })
       .catch(err => {
         console.log(err)
-        setFieldError('error', 'Wrong Username or password'.toUpperCase());
+        setFieldError('error', 'Incorrect Username or password'.toUpperCase());
         setSubmitting(false);
       })
   }

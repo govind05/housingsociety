@@ -133,7 +133,7 @@ router.route('/complaints')
   })
   .post(authentication, (req, res) => {
     let complaint = new Complaint({
-      userId: req.userData.id,
+      userName: req.userData.name,
       subject: req.body.subject,
       message: req.body.message,
     })

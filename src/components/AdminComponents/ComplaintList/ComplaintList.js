@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export default () => {
+import './ComplaintList.css';
+
+export default (props) => {
   return (
-    <div>
-      
+    <div className='ComplaintList'>
+      {
+        props.complaints.map(complaint => (
+          <div>
+            complaint.
+          </div>
+        ))
+      }
     </div>
   )
 }
