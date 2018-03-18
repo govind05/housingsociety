@@ -14,7 +14,7 @@ class FormLogin extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     if (token) {
-      this.props.history.replace('/account')
+      this.props.history.replace('/notice')
     }
   }
 
