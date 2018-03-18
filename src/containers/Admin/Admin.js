@@ -117,6 +117,8 @@ export default class Admin extends Component {
       flatNo: '',
       floor: '',
       wing: '',
+      firstName: '',
+    lastName:'',
       userName: '',
       password: '',
     })
