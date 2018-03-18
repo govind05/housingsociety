@@ -29,7 +29,9 @@ exports.user_login = (req, res) => {
             message: 'Auth Successful',
             token: token,
             uid: doc[0].id,
-            name: doc[0].name
+            userName: doc[0].name,
+            firstName: doc[0].firstName,
+            lastName: doc[0].lastName,
           })
         }
         res.status(401).json({
@@ -60,6 +62,8 @@ exports.user_signup = (req, res) => {
             });
           } else {
             const user = new User({
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
               name: req.body.name,
               password: hash,
             });

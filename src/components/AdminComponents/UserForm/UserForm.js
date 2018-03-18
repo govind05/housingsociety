@@ -7,6 +7,18 @@ export default (props) => {
     <div >
       <form className='UserForm' onSubmit={props.onSubmit}>
         <input
+          name='firstName'
+          value={props.fields.firstName}
+          onChange={props.onChange}
+          type="text"
+          placeholder='Firstname' />
+        <input
+          name='lastName'
+          value={props.fields.lastName}
+          onChange={props.onChange}
+          type="text"
+          placeholder='Lastname' />
+        <input
           name='userName'
           value={props.fields.userName}
           onChange={props.onChange}

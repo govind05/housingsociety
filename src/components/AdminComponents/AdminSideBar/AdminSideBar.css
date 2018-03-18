@@ -1,0 +1,32 @@
+.AdminSideBar {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    max-width: 200px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: #4CAF50;
+    padding-top: 106px;
+}
+
+.AdminSideBar a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    text-decoration: none;
+    color: #81C784;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.AdminSideBar a:hover {
+    color: white;
+}
+
+.ActiveAdmin {
+    color: white;
+}

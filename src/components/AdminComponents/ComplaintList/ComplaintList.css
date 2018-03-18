@@ -1,0 +1,36 @@
+.ComplaintList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ComplaintList div {
+    width: 60%;
+    max-width: 600px;
+    border: 2px solid #4CAF50;
+    margin-bottom: 10px;
+    padding: 20px;
+    word-wrap: break-word;
+}
+
+.ComplaintList h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #777;
+}
+
+.ComplaintList button {
+    background: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    padding: 7px 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.ComplaintList button:active {
+    background: #1B5E20
+}
+
+.ComplaintList button:focus {
+    outline: none;
+}

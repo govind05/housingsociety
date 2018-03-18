@@ -7,8 +7,12 @@ export default (props) => {
     <div className='ComplaintList'>
       {
         props.complaints.map(complaint => (
-          <div>
-            complaint.
+          <div key={complaint._id}>
+            <h1>{complaint.subject}</h1>
+            <h3>
+              FROM:{complaint.userName.toUpperCase()}
+            </h3>
+            <p>{complaint.message}</p>
           </div>
         ))
       }

@@ -6,6 +6,8 @@ import NoticeForm from './../../components/AdminComponents/NoticeForm/NoticeForm
 import ResidentForm from './../../components/AdminComponents/ResidentForm/ResidentForm';
 import UserForm from './../../components/AdminComponents/UserForm/UserForm';
 import ComplaintList from './../../components/AdminComponents/ComplaintList/ComplaintList';
+import AdminSideBar from './../../components/AdminComponents/AdminSideBar/AdminSideBar';
+
 
 export default class Admin extends Component {
   state = {
@@ -16,10 +18,12 @@ export default class Admin extends Component {
     flatNo: '',
     floor: '',
     wing: '',
+    firstName: '',
+    lastName:'',
     userName: '',
     password: '',
     token: '',
-    complaints: '',
+    complaints: [],
   }
 
   componentDidMount() {
@@ -92,6 +96,8 @@ export default class Admin extends Component {
     axios.post('https://thawing-reef-43238.herokuapp.com/api/signup', {
       name: this.state.userName,
       password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
     }, {
         headers: {
           'x-auth': this.state.token
@@ -136,11 +142,15 @@ export default class Admin extends Component {
           1. Add/Remove Resident
           2. Add/Remove Notice
           3. Add Users
+          4. View Complaints
          */}
+        <AdminSideBar />
+        <div style={{marginLeft: '200px', marginTop: '106px'}} >
         <Route path='/admin/notice' render={() => <NoticeForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onNoticeSubmitHandler} />} />
         <Route path='/admin/resident' render={() => <ResidentForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onResidentSubmitHandler} />} />
         <Route path='/admin/user' render={() => <UserForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onUserSubmitHandler} />} />
         <Route path='/admin/complaints' render={() => <ComplaintList complaints={this.state.complaints} />} />
+        </div>
 
       </div>
     )
