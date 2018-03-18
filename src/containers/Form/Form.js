@@ -82,7 +82,7 @@ const FormikApp = withFormik({
           localStorage.setItem('lastName', res.data.lastName);
           localStorage.setItem('userName', res.data.userName);
           values.history.replace({
-            pathname: '/account',
+            pathname: '/notice',
             state: {user: res.data}
           });
         }
