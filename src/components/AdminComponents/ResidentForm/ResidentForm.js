@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './ResidentForm.css';
+import Spinner from '../../UI/Spinner2/Spinner2';
 
 export default (props) => {
   return (
@@ -30,7 +31,7 @@ export default (props) => {
           onChange={props.onChange}
           type="text"
           placeholder='Wing' />
-        <input type="submit" />
+        {props.loading? <Spinner/> : <input type="submit" />}
       </form>
     </div>
   )

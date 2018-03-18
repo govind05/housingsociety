@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Spinner from '../../UI/Spinner2/Spinner2';
 import './NoticeForm.css';
 
 export default (props) => {
@@ -24,7 +25,7 @@ export default (props) => {
           onChange={props.onChange}
           type="text"
           placeholder='Write Notice here...' />
-        <input type="submit" />
+        {props.loading? <Spinner/> : <input type="submit" />}
       </form>
     </div>
   )

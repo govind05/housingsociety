@@ -19,11 +19,15 @@ export default class Admin extends Component {
     floor: '',
     wing: '',
     firstName: '',
-    lastName:'',
+    lastName: '',
     userName: '',
     password: '',
     token: '',
     complaints: [],
+    loadingUser: false,
+    loadingNotice: false,
+    loadingResident: false,
+    loadingComplaint: false,
   }
 
   componentDidMount() {
@@ -33,7 +37,8 @@ export default class Admin extends Component {
     }
     console.log(token)
     this.setState({
-      token
+      token,
+      loadingComplaint: true,
     })
 
     axios.get('https://thawing-reef-43238.herokuapp.com/api/complaints', {
@@ -42,17 +47,25 @@ export default class Admin extends Component {
       }
     })
       .then(res => this.setState({
-        complaints: res.data
+        complaints: res.data,
+        loadingComplaint: false
       }))
-      .catch(e => console.log(e));
+      .catch(e => {
+        this.setState({
+        loadingComplaint: false
+      })
+        console.log(e)});
 
   }
 
   onNoticeSubmitHandler = (e) => {
     e.preventDefault();
+     this.setState({
+          loadingNotice: true,
+        })
     if (this.state.title.trim() === '' ||
       this.state.subject.trim() === '' ||
-      this.state.body.trim() === '') return;
+      this.state.body.trim() === '')  throw Error;
     axios.post('https://thawing-reef-43238.herokuapp.com/api/notices', {
       title: this.state.title,
       subtitle: this.state.subject,
@@ -63,17 +76,28 @@ export default class Admin extends Component {
         }
       }, )
       .then(res => {
+        this.setState({
+          loadingNotice: false,
+        })
         this.resetForm();
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+        this.setState({
+          loadingNotice: false,
+        })
+        console.log(e)
+      });
   }
 
   onResidentSubmitHandler = (e) => {
     e.preventDefault();
+     this.setState({
+          loadingResident: true,
+        })
     if (this.state.name.trim() === '' ||
       this.state.flatNo.trim() === '' ||
       this.state.wing.trim() === '' ||
-      this.state.floor.trim() === '') return;
+      this.state.floor.trim() === '') throw Error;
     axios.post('https://thawing-reef-43238.herokuapp.com/api/residents', {
       name: this.state.name,
       flatNo: this.state.flatNo,
@@ -85,14 +109,27 @@ export default class Admin extends Component {
         }
       }, )
       .then(res => {
+         this.setState({
+          loadingResident: false,
+        })
         this.resetForm();
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+         this.setState({
+          loadingResident: false,
+        })
+        console.log(e)
+      });
   }
 
   onUserSubmitHandler = (e) => {
     e.preventDefault();
-    if (this.state.userName.trim() === '' || this.state.password.trim() === '') return;
+     this.setState({
+          loadingUser: true,
+        })
+    if (this.state.userName.trim() === '' || 
+    this.state.password.trim() === '') 
+    throw Error;
     axios.post('https://thawing-reef-43238.herokuapp.com/api/signup', {
       name: this.state.userName,
       password: this.state.password,
@@ -104,9 +141,17 @@ export default class Admin extends Component {
         }
       }, )
       .then(res => {
+         this.setState({
+          loadingUser: false,
+        })
         this.resetForm();
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+         this.setState({
+          loadingUser: false,
+        })
+        console.log(e)
+      });
   }
   resetForm = () => {
     this.setState({
@@ -118,7 +163,7 @@ export default class Admin extends Component {
       floor: '',
       wing: '',
       firstName: '',
-    lastName:'',
+      lastName: '',
       userName: '',
       password: '',
     })
@@ -147,14 +192,14 @@ export default class Admin extends Component {
           4. View Complaints
          */}
         <AdminSideBar />
-        <div style={{marginLeft: '200px', marginTop: '106px'}} >
-        <Switch>
-        <Route path='/admin/notice' render={() => <NoticeForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onNoticeSubmitHandler} />} />
-        <Route path='/admin/resident' render={() => <ResidentForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onResidentSubmitHandler} />} />
-        <Route path='/admin/user' render={() => <UserForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onUserSubmitHandler} />} />
-        <Route path='/admin/complaints' render={() => <ComplaintList complaints={this.state.complaints} />} />
-        <Redirect to='/admin/notice' />
-        </Switch>
+        <div style={{ marginLeft: '200px', marginTop: '106px' }} >
+          <Switch>
+            <Route path='/admin/notice' render={() => <NoticeForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onNoticeSubmitHandler} loading={this.state.loadingNotice} />} />
+            <Route path='/admin/resident' render={() => <ResidentForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onResidentSubmitHandler} loading={this.state.loadingResident} />} />
+            <Route path='/admin/user' render={() => <UserForm fields={this.state} onChange={this.onChangeHandler} onSubmit={this.onUserSubmitHandler} loading={this.state.loadingUser} />} />
+            <Route path='/admin/complaints' render={() => <ComplaintList complaints={this.state.complaints} loading={this.state.loadingComplaint} />} />
+            <Redirect to='/admin/notice' />
+          </Switch>
         </div>
 
       </div>

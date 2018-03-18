@@ -2,12 +2,14 @@ import React from 'react';
 import axios from 'axios';
 
 import Notices from '../../components/Notices/Notices';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import Layout from '../../hoc/Layout/Layout';
 
 class NoticeBoard extends React.Component {
   state = {
     currentNotice: '',
-    notices: ''
+    notices: '',
+    loading: true,
   }
 
   componentDidMount() {
@@ -22,7 +24,8 @@ class NoticeBoard extends React.Component {
     })
       .then(res => {
         return this.setState({
-        notices: res.data
+        notices: res.data,
+        loading: false,
       })})
       .catch(e => console.log(e))
   }
@@ -35,14 +38,14 @@ class NoticeBoard extends React.Component {
   }
 
   render() {
-    let notices = this.state.notices.length > 0 ? (
+    let notices = !this.state.loading ? (
       <div>
         <Notices
           data={this.state.notices}
           currentNotice={this.state.currentNotice}
           onReadMore={this.onReadMoreHandler} />
       </div>
-    ) : null;
+    ) : <Spinner/>;
     return (
       <Layout>
         {notices}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './RegisterComplaint.css';
+import Spinner from '../../components/UI/Spinner2/Spinner2';
 
 export default (props) => {
   return (
@@ -18,7 +19,7 @@ export default (props) => {
           onChange={props.onChange}
           type="text"
           placeholder='Write your complaint here..' />
-        <input type="submit" />
+        {props.loading? <Spinner/>:<input type="submit" />}
       </form>
     </div>
   )

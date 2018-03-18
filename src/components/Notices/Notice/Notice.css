@@ -21,6 +21,17 @@
     border-radius: 20px;
 }
 
+.Notice span {
+    color: #777;
+    font-size: 16;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Notice p#subtitle {
+    margin-top: 25px;
+    font-size: 20px;
+}
+
 .Notice button:active {
     background: hsl(103, 100%, 14%);
 }

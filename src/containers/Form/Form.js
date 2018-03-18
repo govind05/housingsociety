@@ -4,8 +4,9 @@ import Yup from 'yup';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import './Form.css';
 import { authSuccess } from '../../store/actions/users';
+
+import './Form.css';
 
 class FormLogin extends React.Component {
   

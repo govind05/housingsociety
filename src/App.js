@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Login from './containers/Form/Form';
 import NoticeBoard from './containers/NoticeBoard/NoticeBoard';
@@ -25,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

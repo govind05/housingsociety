@@ -20,7 +20,8 @@ export default class Account extends Component {
       userName: '',
       firstName: '',
       lastName: '',
-    }
+    },
+    loading: false,
   }
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -42,8 +43,15 @@ export default class Account extends Component {
     console.log(this.props)
   }
   onSubmitComplaintHandler = (e) => {
+    this.setState({
+      loading: true
+    })
     e.preventDefault();
-    if (this.state.subject.trim() === '' || this.state.complaint.trim() === '') return;
+    if (this.state.subject.trim() === '' || this.state.complaint.trim() === '') {
+      this.setState({
+        loading: false,
+      })
+      return};
     axios.post('https://thawing-reef-43238.herokuapp.com/api/complaints', {
       subject: this.state.subject,
       message: this.state.complaint,
@@ -62,6 +70,7 @@ export default class Account extends Component {
     this.setState({
       subject: '',
       complaint: '',
+      loading: false,
     })
   }
 
@@ -94,6 +103,7 @@ export default class Account extends Component {
                 <RegisterComplaint
                   subject={this.state.subject}
                   complaint={this.state.complaint}
+                  loading= {this.state.loading}
                   onChange={this.onChangeHandler}
                   onSubmitComplaint={this.onSubmitComplaintHandler}
                 />}
