@@ -8,7 +8,7 @@ class Layout extends Component {
   state = {
     sideDrawerOpen: false
   }
-
+  // Handling sideDrawer's Opening and Closing.
   sidedrawerClosedHandler = () => (
     this.setState({ sideDrawerOpen: false })
   )
@@ -20,6 +20,7 @@ class Layout extends Component {
 
   render() {
     return (
+      // Common Layout for all the pages.
       <div>
         <Toolbar
           sideDrawerClick={this.sidedrawerToggleHandler}

@@ -9,6 +9,7 @@ import { logoutHandler } from '../../shared/utility';
 
 import './NavBar.css';
 
+// NavBar for all the pages.
 const navBar = (props) => {
   return (
     <React.Fragment>

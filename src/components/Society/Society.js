@@ -8,7 +8,7 @@ const society = (props) => {
   let sortedResidents = props.residents[props.match.params.wing].sort((a, b) => {
     return a.floor - b.floor
   }).sort((a, b) => a.flatNo - b.flatNo)
-  
+
   //Getting all the unique floors.
   let floors = sortedResidents.reduce((uniqueFloors, resident) => {
     if (resident.floor && !~uniqueFloors.indexOf(resident.floor)) uniqueFloors.push(resident.floor)
@@ -26,7 +26,7 @@ const society = (props) => {
             residentsCurrentFloor.map(resident => (
               <div key={resident.flatNo}>
                 <p>{resident.flatNo}</p>
-                <h1 style={{wordWrap:'break-word'}}>{resident.name}</h1>
+                <h1 style={{ wordWrap: 'break-word' }}>{resident.name}</h1>
               </div>
             ))
           }

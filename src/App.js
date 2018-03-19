@@ -14,6 +14,9 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          {/* 
+            Routes to all the pages in the website. 
+          */}
           <Route path='/notice' component={NoticeBoard} />
           <Route path='/residents' component={Residents} />
           <Route path='/account' component={Account} />

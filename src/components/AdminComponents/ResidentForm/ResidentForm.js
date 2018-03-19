@@ -3,6 +3,7 @@ import React from 'react';
 import './ResidentForm.css';
 import Spinner from '../../UI/Spinner2/Spinner2';
 
+// Add resident page.
 export default (props) => {
   return (
     <div >

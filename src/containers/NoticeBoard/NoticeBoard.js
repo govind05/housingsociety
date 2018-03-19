@@ -13,10 +13,15 @@ class NoticeBoard extends React.Component {
   }
 
   componentDidMount() {
+    // Retrieving Token from localstorage.
     const token = localStorage.getItem('token')
-    if(!token){
+
+    // Redirect to login page if no token found.
+    if (!token) {
       this.props.history.replace('/')
     }
+
+    // Fetching all notices
     axios.get('https://thawing-reef-43238.herokuapp.com/api/notices', {
       headers: {
         'x-auth': token
@@ -24,12 +29,14 @@ class NoticeBoard extends React.Component {
     })
       .then(res => {
         return this.setState({
-        notices: res.data,
-        loading: false,
-      })})
+          notices: res.data,
+          loading: false,
+        })
+      })
       .catch(e => console.log(e))
   }
 
+  // Setting the current notice to read.
   onReadMoreHandler = (id) => {
     id = this.state.currentNotice === id ? '' : id;
     this.setState({
@@ -40,12 +47,15 @@ class NoticeBoard extends React.Component {
   render() {
     let notices = !this.state.loading ? (
       <div>
+      {/* 
+        Creating a Notices component.
+       */}
         <Notices
           data={this.state.notices}
           currentNotice={this.state.currentNotice}
           onReadMore={this.onReadMoreHandler} />
       </div>
-    ) : <Spinner/>;
+    ) : <Spinner />;
     return (
       <Layout>
         {notices}

@@ -50,7 +50,6 @@
     /* margin-left: 25px; */
 }
 
-
 .Input input {
     color: #666;
     width: 100%;
@@ -111,5 +110,18 @@
 @media(min-width: 600px) {
     .AppForm {
         background-position: center;
+    }
+}
+
+@media(max-width:500px) {
+    .Input input {
+        width: 80%;
+        align-self: center;
+    }
+    .Input label {
+        margin-left: 20px;
+    }
+    .Error p{
+      left: 25px;
     }
 }

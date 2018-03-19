@@ -28,19 +28,19 @@ const sideDrawer = (props) => {
             </div>
           </NavLink></li>
           <li><NavLink to='/notice' activeStyle={{ background: "#81C784", color: 'white' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'  }} >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
               <MdEventNote />
               Notice Board
             </div>
           </NavLink></li>
           <li><NavLink to='/residents' activeStyle={{ background: "#81C784", color: 'white' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'  }} >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
               <MdPeople />
               Residents
             </div>
           </NavLink></li>
           <li><a style={{ cursor: 'pointer' }} onClick={() => logoutHandler(props.onLogout, props.history.replace)}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'  }} >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
               <FaSignOut />
               Logout
             </div>

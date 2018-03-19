@@ -3,6 +3,7 @@ import React from 'react';
 import Spinner from '../../UI/Spinner2/Spinner2';
 import './NoticeForm.css';
 
+//  Notice Form Page.
 export default (props) => {
   return (
     <div >

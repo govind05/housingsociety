@@ -4,6 +4,7 @@ import moment from 'moment';
 import './Notice.css'
 
 const notice = (props) => {
+  // To show the message body.
   let classes = ['Body'];
   if (props.showBody) {
     classes = ['Body', 'Opened']
@@ -17,7 +18,10 @@ const notice = (props) => {
       <div className={classes.join(' ')}>
         {props.showBody ? <p>{props.body}</p> : null}
       </div>
-      <button onClick={() => props.onReadMore(props.id)}>{props.showBody ? 'Show Less' : 'Show More'}</button>
+      <button
+        onClick={() => props.onReadMore(props.id)}>
+        {props.showBody ? 'Show Less' : 'Show More'}
+      </button>
     </div>
 
   );

@@ -31,7 +31,10 @@ export default class Admin extends Component {
   }
 
   componentDidMount() {
+    // Retrieving Token from localstorage.
     const token = localStorage.getItem('token')
+
+    // Redirect to login page if no token found.
     if (!token) {
       this.props.history.replace('/')
     }
@@ -41,6 +44,7 @@ export default class Admin extends Component {
       loadingComplaint: true,
     })
 
+    // Fetching all complaints.
     axios.get('https://thawing-reef-43238.herokuapp.com/api/complaints', {
       headers: {
         'x-auth': token
@@ -52,20 +56,21 @@ export default class Admin extends Component {
       }))
       .catch(e => {
         this.setState({
-        loadingComplaint: false
-      })
-        console.log(e)});
+          loadingComplaint: false
+        })
+        console.log(e)
+      });
 
   }
 
   onNoticeSubmitHandler = (e) => {
     e.preventDefault();
-     this.setState({
-          loadingNotice: true,
-        })
+    this.setState({
+      loadingNotice: true,
+    })
     if (this.state.title.trim() === '' ||
       this.state.subject.trim() === '' ||
-      this.state.body.trim() === '')  throw Error;
+      this.state.body.trim() === '') throw Error;
     axios.post('https://thawing-reef-43238.herokuapp.com/api/notices', {
       title: this.state.title,
       subtitle: this.state.subject,
@@ -91,9 +96,9 @@ export default class Admin extends Component {
 
   onResidentSubmitHandler = (e) => {
     e.preventDefault();
-     this.setState({
-          loadingResident: true,
-        })
+    this.setState({
+      loadingResident: true,
+    })
     if (this.state.name.trim() === '' ||
       this.state.flatNo.trim() === '' ||
       this.state.wing.trim() === '' ||
@@ -109,13 +114,13 @@ export default class Admin extends Component {
         }
       }, )
       .then(res => {
-         this.setState({
+        this.setState({
           loadingResident: false,
         })
         this.resetForm();
       })
       .catch(e => {
-         this.setState({
+        this.setState({
           loadingResident: false,
         })
         console.log(e)
@@ -124,12 +129,12 @@ export default class Admin extends Component {
 
   onUserSubmitHandler = (e) => {
     e.preventDefault();
-     this.setState({
-          loadingUser: true,
-        })
-    if (this.state.userName.trim() === '' || 
-    this.state.password.trim() === '') 
-    throw Error;
+    this.setState({
+      loadingUser: true,
+    })
+    if (this.state.userName.trim() === '' ||
+      this.state.password.trim() === '')
+      throw Error;
     axios.post('https://thawing-reef-43238.herokuapp.com/api/signup', {
       name: this.state.userName,
       password: this.state.password,
@@ -141,13 +146,13 @@ export default class Admin extends Component {
         }
       }, )
       .then(res => {
-         this.setState({
+        this.setState({
           loadingUser: false,
         })
         this.resetForm();
       })
       .catch(e => {
-         this.setState({
+        this.setState({
           loadingUser: false,
         })
         console.log(e)

@@ -15,10 +15,16 @@ export default class Residents extends Component {
   }
 
   componentDidMount() {
+    // Retrieving Token from localstorage.
     const token = localStorage.getItem('token')
+
+    // Redirect to login page if no token found.
     if(!token){
       this.props.history.replace('/')
     }
+
+    // Fetching all residents
+
     axios('https://thawing-reef-43238.herokuapp.com/api/residents',{
       headers: {
         'x-auth': token
@@ -37,6 +43,9 @@ export default class Residents extends Component {
       <h1 style={{ color: '#333' }}>Wing</h1>
       <Wings wings={wings} />
       <Switch>
+      {/* 
+        All Wings in society
+       */}
         <Route path='/residents/:wing' render={() => <Society residents={this.state.residents} />} />
         <Redirect to={`/residents/${wings[0]}`} />
       </Switch>

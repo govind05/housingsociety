@@ -3,6 +3,7 @@ import React from 'react';
 import './RegisterComplaint.css';
 import Spinner from '../../components/UI/Spinner2/Spinner2';
 
+// Register Complaint component on Account page.
 export default (props) => {
   return (
     <div >

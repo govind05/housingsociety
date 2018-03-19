@@ -9,7 +9,7 @@ import { authSuccess } from '../../store/actions/users';
 import './Form.css';
 
 class FormLogin extends React.Component {
-  
+
   //For auto signin.
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -22,6 +22,9 @@ class FormLogin extends React.Component {
     return (
       <div className='AppForm'>
         <div className='BackgroundBlur'>
+          {/* 
+          Login Form.
+         */}
           <Form className='Form'>
             <div className='Error'>
               <Field type='hidden' name='error' />
@@ -29,7 +32,7 @@ class FormLogin extends React.Component {
                 fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
               }}>{this.props.errors.error}</p>}
             </div>
-            <h2 style={{ alignSelf:'left',padding: 0, margin: 0, color: '#666', paddingLeft: '10%', paddingBottom: '18px'}}>Login</h2>
+            <h2 style={{ alignSelf: 'left', padding: 0, margin: 0, color: '#666', paddingLeft: '10%', paddingBottom: '18px' }}>Login</h2>
             <div className={this.props.touched.name && this.props.errors.name ? 'Input Error' : 'Input '}>
               <label> NAME</label>
               <Field type='name' name='name' autoFocus />
@@ -65,7 +68,7 @@ const FormikApp = withFormik({
     password: Yup.string().required('Password is required'),
   }),
 
-  // Handling the login or Signup event.
+  // Handling the login event.
   handleSubmit(values, { resetForm, setErrors, setFieldError, setSubmitting }) {
     axios.post('https://thawing-reef-43238.herokuapp.com/api/login', {
       name: values.name,
@@ -76,6 +79,7 @@ const FormikApp = withFormik({
         if (res.status === 200) {
           setSubmitting(false);
           resetForm();
+          // Storing user information in the localstorage.
           values.onAuthSuccess(res.data.token, res.data.uid);
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('firstName', res.data.firstName);
@@ -83,7 +87,7 @@ const FormikApp = withFormik({
           localStorage.setItem('userName', res.data.userName);
           values.history.replace({
             pathname: '/notice',
-            state: {user: res.data}
+            state: { user: res.data }
           });
         }
       })
@@ -104,4 +108,5 @@ const mapDispatchToProps = dispatch => ({
   onAuthSuccess: (token, userId) => dispatch(authSuccess(token, userId))
 })
 
+// Connecting Form to Redux
 export default connect(mapStateToProps, mapDispatchToProps)(FormikApp);

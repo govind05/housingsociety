@@ -18,6 +18,7 @@ const authentication = require('./middleware/authenticate')
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
+// Setting CORS header.
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
@@ -142,6 +143,7 @@ router.route('/complaints')
         e => res.status(400).send(e))
   })
 
+// To Handle any request other than /api.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'))
 });

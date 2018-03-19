@@ -16,7 +16,7 @@ export default class Account extends Component {
     subject: '',
     complaint: '',
     token: '',
-    user:{
+    user: {
       userName: '',
       firstName: '',
       lastName: '',
@@ -24,6 +24,7 @@ export default class Account extends Component {
     loading: false,
   }
   componentDidMount() {
+    // Retrieving all user information from localstorage.
     const token = localStorage.getItem('token')
     const firstName = localStorage.getItem('firstName')
     const lastName = localStorage.getItem('lastName')
@@ -33,6 +34,7 @@ export default class Account extends Component {
       lastName,
       userName,
     }
+    // Redirect to login page if no token found.
     if (!token) {
       this.props.history.replace('/')
     }
@@ -40,8 +42,9 @@ export default class Account extends Component {
       token,
       user
     })
-    console.log(this.props)
   }
+
+  // To post complaints to db.
   onSubmitComplaintHandler = (e) => {
     this.setState({
       loading: true
@@ -51,14 +54,15 @@ export default class Account extends Component {
       this.setState({
         loading: false,
       })
-      return};
+      return
+    };
     axios.post('https://thawing-reef-43238.herokuapp.com/api/complaints', {
       subject: this.state.subject,
       message: this.state.complaint,
     }, {
-      headers: {
-        'x-auth': this.state.token
-      }
+        headers: {
+          'x-auth': this.state.token
+        }
       }, )
       .then(res => {
         this.resetForm();
@@ -88,7 +92,11 @@ export default class Account extends Component {
     return (
       <Layout>
         <div className='Account'>
+          {/* Navigation SideBar */}
           <AccountNavigation />
+          {/* 
+            All routes in Account page.
+           */}
           <Switch>
             <Route
               path='/account/user-info'
@@ -103,7 +111,7 @@ export default class Account extends Component {
                 <RegisterComplaint
                   subject={this.state.subject}
                   complaint={this.state.complaint}
-                  loading= {this.state.loading}
+                  loading={this.state.loading}
                   onChange={this.onChangeHandler}
                   onSubmitComplaint={this.onSubmitComplaintHandler}
                 />}

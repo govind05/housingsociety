@@ -3,6 +3,7 @@ import SideDrawerToggler from '../SideDrawer/SideDrawerToggler/SideDrawerToggler
 import NavBar from '../NavBar';
 import './Toolbar.css';
 
+// Toolbar component to hold Navbar and sideDrawerToggler.
 const toolbar = (props) => (
   <header className='Toolbar'>
     <SideDrawerToggler click={props.sideDrawerClick}/>

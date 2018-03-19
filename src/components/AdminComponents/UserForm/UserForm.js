@@ -3,6 +3,7 @@ import React from 'react';
 import './UserForm.css';
 import Spinner from '../../UI/Spinner2/Spinner2';
 
+// Add User page.
 export default (props) => {
   return (
     <div >

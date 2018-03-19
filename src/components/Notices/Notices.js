@@ -7,6 +7,9 @@ const notices = (props) => {
     <div>
       <h1>Notice Board</h1>
       <hr />
+      {/* 
+        Mapping all the notices to Notice component.
+       */}
       {
         props.data.map((notice, i) => {
           let showBody = props.currentNotice === notice._id;
